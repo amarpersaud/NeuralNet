@@ -3,7 +3,7 @@
 A simple back-propogation neural network taught to identify a series of 2x2 images for whether they are one of the following images:
 
 - Dot (1 in each corner)
-- Diagonal Line (\, /)
+- Diagonal Line (\\, /)
 - Vertical Line (Left / Right)
 - Horizontal Line (Top / Bottom)
 
