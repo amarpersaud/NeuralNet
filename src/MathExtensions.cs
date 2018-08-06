@@ -12,7 +12,7 @@ namespace NeuralNetworkBase
         /// Fast absolute value
         /// </summary>
         /// <param name="i">Input</param>
-        /// <returns>Absolute value of input</returns>
+        /// <returns>Absolute value of Input</returns>
         public static double abs(this double i)
         {
             return (i < 0) ? -i : i;
@@ -21,7 +21,7 @@ namespace NeuralNetworkBase
         /// <summary>
         /// Sigmoid of x
         /// </summary>
-        /// <param name="x">input</param>
+        /// <param name="x">Input</param>
         /// <returns>Sigmoid of x</returns>
         public static double sigmoid(this double x)
         {
@@ -31,7 +31,7 @@ namespace NeuralNetworkBase
         /// <summary>
         /// Derivative of sigmoid
         /// </summary>
-        /// <param name="x">input</param>
+        /// <param name="x">Input</param>
         /// <returns>Derivative of sigmoid at x</returns>
         public static double sigmoidDerivative(this double x)
         {

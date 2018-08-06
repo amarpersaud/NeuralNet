@@ -12,12 +12,23 @@ namespace NeuralNetworkBase
     public struct TrainingData
     {
         /// <summary>
+        /// Create a TrainingData struct for training a ff-nn
+        /// </summary>
+        /// <param name="input">Inputs</param>
+        /// <param name="output">Outputs</param>
+        public TrainingData(double[] input, double[] output)
+        {
+            this.Input = input;
+            this.Output = output;
+        }
+
+        /// <summary>
         /// Neural network inputs
         /// </summary>
-        public double[] input;
+        public double[] Input;
         /// <summary>
         /// Expected outputs
         /// </summary>
-        public double[] output;
+        public double[] Output;
     }
 }

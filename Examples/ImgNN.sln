@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgNN", "ImgNN\ImgNN.csproj", "{79FAAA68-4D22-48AA-85BB-7CAB5B19114D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkBase", "NeuralNetworkBase\NeuralNetworkBase.csproj", "{AA01628F-5123-4422-AA6D-73EB96F2DD2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkBase", "..\src\NeuralNetworkBase.csproj", "{AA01628F-5123-4422-AA6D-73EB96F2DD2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

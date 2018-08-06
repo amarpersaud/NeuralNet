@@ -9,17 +9,17 @@ namespace NeuralNetworkBase
     public struct Neuron
     {
         /// <summary>
-        /// Weights for each input
+        /// Weights for each Input
         /// </summary>
-        public double[] weights;
+        public double[] Weights;
         /// <summary>
         /// Bias value added to weighted sum
         /// </summary>
-        public double bias;
+        public double Bias;
         /// <summary>
         /// Delta for back-propogation
         /// </summary>
-        public double delta;
+        public double Delta;
 
         /// <summary>
         /// Neuron for Neural Network
@@ -27,25 +27,25 @@ namespace NeuralNetworkBase
         /// <param name="n">Neuron to deep clone</param>
         public Neuron(Neuron n)
         {
-            this.bias = n.bias;
-            this.delta = n.delta;
-            this.weights = new double[n.weights.Length];
-            for (int i = 0; i < n.weights.Length; i++)
+            this.Bias = n.Bias;
+            this.Delta = n.Delta;
+            this.Weights = new double[n.Weights.Length];
+            for (int i = 0; i < n.Weights.Length; i++)
             {
-                this.weights[i] = n.weights[i];
+                this.Weights[i] = n.Weights[i];
             }
         }
         /// <summary>
-        /// Get the output of an individual neuron from given inputs
+        /// Get the Output of an individual neuron from given inputs
         /// </summary>
         /// <param name="n">Neuron to test</param>
         /// <param name="inputs">Inputs to neuron</param>
         /// <returns>Output of the Neuron</returns>
-        public static double GetOutput(Neuron n, double[] inputs){
-            double result = n.bias;
-            for (int i = 0; i < n.weights.Length; i++)
+        public double GetOutput(double[] inputs){
+            double result = Bias;
+            for (int i = 0; i < Weights.Length; i++)
             {
-                result += n.weights[i] * inputs[i];
+                result += Weights[i] * inputs[i];
             }
             return MathEx.sigmoid(result);
         }
