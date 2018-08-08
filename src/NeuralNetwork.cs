@@ -14,7 +14,7 @@ namespace NeuralNetworkBase
     {
         public static Random r = new Random(DateTime.Now.Millisecond * DateTime.Now.Second);
         public Layer[] Layers;
-        public double LRate = 50f;
+        public double LRate = 5;
         public int LastLayer;
         public int LastHiddenLayer;
 
@@ -26,8 +26,9 @@ namespace NeuralNetworkBase
         /// <param name="neuronCount">An array of the number of hidden neurons in each layer</param>
         /// <param name="inputs">The number of inputs. There are no Input neurons.</param>
         /// <param name="outputs">The number of outputs in the final Output layer</param>
-        public NeuralNetwork(int[] neuronCount, int inputs, int outputs)
+        public NeuralNetwork(int[] neuronCount, int inputs, int outputs, double LRate = 5)
         {
+            this.LRate = LRate;
             Layers = new Layer[neuronCount.Length + 1];
 
             //Some variables to make it easier to keep track of where things are
@@ -53,7 +54,7 @@ namespace NeuralNetworkBase
                 {
                     //Initialize each neuron
                     Layers[j].Neurons[k] = new Neuron();
-                    Layers[j].Neurons[k].Bias = (2.0 * r.NextDouble()) - 1.0f;
+                    Layers[j].Neurons[k].Bias = (2.0 * r.NextDouble()) - 1.0;
                     if(j == 0)
                     {
                         Layers[j].Neurons[k].Weights = new double[inputs];
@@ -206,7 +207,7 @@ namespace NeuralNetworkBase
         private double GetHiddenNeuronDelta(int neuron, double output, Layer nextLayer)
         {
 
-            double errorFactor = 0.0f;
+            double errorFactor = 0.0;
             for (int i = 0; i < nextLayer.Neurons.Length; i++)
             {
                 errorFactor += nextLayer.Neurons[i].Delta * nextLayer.Neurons[i].Weights[neuron];

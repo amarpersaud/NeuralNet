@@ -16,7 +16,7 @@ namespace ImgNN
 {
     class Program
     {
-        public const int Iterations = 10_000;
+        public const int Iterations = 1_000_000;
         
         public static string[] OutputNames = new string[] {
 
@@ -33,7 +33,7 @@ namespace ImgNN
         static void Main(string[] args)
         {
             Console.WriteLine("Copyright (c) Amar Persaud 2018");
-            NeuralNetwork n = new NeuralNetwork(new int[] { }, 4, 7);
+            NeuralNetwork n = new NeuralNetwork(new int[] { 7 }, 4, 7);
             TrainingData[] t = new TrainingData[]
             {
                 new TrainingData {Input= new double[]{1, 0, 0, 1}, Output = new double[] {0, 0, 0, 0, 0, 1, 0 } }, // Diagonal \
@@ -62,13 +62,9 @@ namespace ImgNN
             }
             stop.Stop();
             Console.WriteLine($"Done. Took {stop.Elapsed.TotalSeconds} seconds, {stop.Elapsed.TotalSeconds / (Iterations * t.Length)} per iteration");
-            Console.ReadLine();
+            
+            Console.WriteLine("Error: " + n.GetAverageError(t));
 
-
-            foreach (TrainingData td in t)
-            {
-                Console.WriteLine("Error: " + n.GetTotalError(td));
-            }
             Console.WriteLine("Type help for more information");
             while (true)
             {
@@ -143,7 +139,10 @@ namespace ImgNN
                         }
                         Console.WriteLine(o + "\n");
                         int index = Array.IndexOf(result, 1);
-                        Console.WriteLine($"Image is: {OutputNames[index]} \n");
+                        if (index != -1)
+                        {
+                            Console.WriteLine($"Image is: {OutputNames[index]} \n");
+                        }
                     }
                     else {
                         Console.WriteLine($"Dimension mistmatch. Expected 2 x 2. Got {b.Width} x {b.Height}");
