@@ -30,11 +30,14 @@ namespace NeuralNetworkBase
         {
             Layers = new Layer[neuronCount.Length + 1];
 
+            //Some variables to make it easier to keep track of where things are
             LastLayer = Layers.Length - 1;
             LastHiddenLayer = Layers.Length - 2;
 
+
             for (int j = 0; j < Layers.Length; j++)
             {
+                //Initialize each later
                 Layers[j] = new Layer();
                 if (j == Layers.Length - 1)
                 {
@@ -44,8 +47,11 @@ namespace NeuralNetworkBase
                 {
                     Layers[j].Neurons = new Neuron[neuronCount[j]];
                 }
+                //Make sure output is not null
+                Layers[j].Output = new double[Layers[j].Neurons.Length];
                 for (int k = 0; k < Layers[j].Neurons.Length; k++)
                 {
+                    //Initialize each neuron
                     Layers[j].Neurons[k] = new Neuron();
                     Layers[j].Neurons[k].Bias = (2.0 * r.NextDouble()) - 1.0f;
                     if(j == 0)
@@ -64,6 +70,10 @@ namespace NeuralNetworkBase
             }
         }
 
+        /// <summary>
+        /// Constructor to duplicate network
+        /// </summary>
+        /// <param name="n"></param>
         public NeuralNetwork(NeuralNetwork n)
         {
             this.Layers = new Layer[n.Layers.Length];
@@ -81,6 +91,11 @@ namespace NeuralNetworkBase
 
         }
 
+        /// <summary>
+        /// Get the average error for a set of training data
+        /// </summary>
+        /// <param name="td"></param>
+        /// <returns></returns>
         public double GetAverageError(TrainingData[] td)
         {
             double terr = 0;
@@ -92,6 +107,10 @@ namespace NeuralNetworkBase
             return terr / td.Length;
         }
 
+        /// <summary>
+        /// Train the network on a single piece of training data
+        /// </summary>
+        /// <param name="td">Training data to train network with</param>
         public void Train(TrainingData td)
         {
             //Calculate Output to fill layer outputs

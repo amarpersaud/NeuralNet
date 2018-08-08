@@ -33,8 +33,9 @@ namespace NeuralNetworkBase
             {
                 this.Neurons[i] = new Neuron(l.Neurons[i]);
             }
+            Output = new double[Neurons.Length];
         }
-
+        
         public double[] GetOutput(double[] previousLayerOutput)
         {
             for (int i = 0; i < Output.Length; i++)

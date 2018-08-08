@@ -49,7 +49,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NeuralNetworkBase.csproj">
+      <Project>{aa01628f-5123-4422-aa6d-73eb96f2dd2b}</Project>
+      <Name>NeuralNetworkBase</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="img\1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
