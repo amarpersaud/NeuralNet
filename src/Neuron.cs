@@ -21,6 +21,15 @@ namespace NeuralNetworkBase
         /// </summary>
         public double Delta;
 
+
+
+        public Neuron(double[] Weights, double Bias)
+        {
+            this.Weights = (double[])Weights.Clone();
+            this.Bias = Bias;
+            this.Delta = 0;
+        }
+
         /// <summary>
         /// Neuron for Neural Network
         /// </summary>

@@ -12,6 +12,7 @@ namespace NeuralNetworkBase
         /// Array of neurons in the layer
         /// </summary>
         public Neuron[] Neurons;
+
         /// <summary>
         /// Output of this layer
         /// </summary>
@@ -20,29 +21,43 @@ namespace NeuralNetworkBase
         /// <summary>
         /// Layer of a neural network
         /// </summary>
-        /// <param name="l">Deep Clone a Layer</param>
+        /// <param name="Neurons">Array of the neurons in the network</param>
+        public Layer(Neuron[] Neurons)
+        {
+            this.Neurons = (Neuron[])Neurons.Clone();
+            this.Output = new double[Neurons.Length];
+        }
+
+        /// <summary>
+        /// Deep Clone a Layer of a neural network. 
+        /// </summary>
+        /// <param name="l">Layer to clone</param>
         public Layer(Layer l)
         {
-            this.Output = new double[l.Output.Length];
-            for (int i = 0; i < l.Output.Length; i++)
-            {
-                Output[i] = l.Output[i];
-            }
+            //Shallow copy since content are doubles
+            this.Output = (double[])l.Output.Clone();
+            
+            //Deep copy
             this.Neurons = new Neuron[l.Neurons.Length];
+            
             for (int i = 0; i < l.Neurons.Length; i++)
             {
                 this.Neurons[i] = new Neuron(l.Neurons[i]);
             }
-            Output = new double[Neurons.Length];
         }
-        
-        public double[] GetOutput(double[] previousLayerOutput)
+
+        /// <summary>
+        /// Get the output of the layer
+        /// </summary>
+        /// <param name="input">The input to the layer, usually the output from the previous layer</param>
+        /// <returns>nd array of</returns>
+        public double[] GetOutput(double[] input)
         {
-            for (int i = 0; i < Output.Length; i++)
+            for(int i = 0; i < Neurons.Length; i++)
             {
-                Output[i] = Neurons[i].GetOutput(previousLayerOutput);
+                Output[i] = Neurons[i].GetOutput(input);
             }
-            return (double[])Output.Clone();
+            return Output;
         }
     }
 }

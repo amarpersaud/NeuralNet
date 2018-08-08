@@ -38,36 +38,39 @@ namespace NeuralNetworkBase
 
             for (int j = 0; j < Layers.Length; j++)
             {
-                //Initialize each later
-                Layers[j] = new Layer();
+                Neuron[] neurons;
+                
                 if (j == Layers.Length - 1)
                 {
-                    Layers[j].Neurons = new Neuron[outputs];
+                    neurons = new Neuron[outputs];
                 }
                 else
                 {
-                    Layers[j].Neurons = new Neuron[neuronCount[j]];
+                    neurons = new Neuron[neuronCount[j]];
                 }
-                //Make sure output is not null
-                Layers[j].Output = new double[Layers[j].Neurons.Length];
+
                 for (int k = 0; k < Layers[j].Neurons.Length; k++)
                 {
                     //Initialize each neuron
-                    Layers[j].Neurons[k] = new Neuron();
-                    Layers[j].Neurons[k].Bias = (2.0 * r.NextDouble()) - 1.0;
-                    if(j == 0)
+                    double Bias = (2.0 * r.NextDouble()) - 1.0;
+                    double[] Weights;
+                    if (j == 0)
                     {
-                        Layers[j].Neurons[k].Weights = new double[inputs];
+                        Weights = new double[inputs];
                     }
                     else
                     {
-                        Layers[j].Neurons[k].Weights = new double[neuronCount[j - 1]];
+                        Weights = new double[neuronCount[j - 1]];
                     }
                     for (int l = 0; l < Layers[j].Neurons[k].Weights.Length; l++)
                     {
-                        Layers[j].Neurons[k].Weights[l] = r.Next(-1, 2);
+                        Weights[l] = (2.0 * r.NextDouble()) - 1.0;
                     }
+
+                    neurons[k] = new Neuron(Weights, Bias);
                 }
+                Layers[j] = new Layer(neurons);
+
             }
         }
 
