@@ -49,7 +49,7 @@ namespace NeuralNetworkBase
                     neurons = new Neuron[neuronCount[j]];
                 }
 
-                for (int k = 0; k < Layers[j].Neurons.Length; k++)
+                for (int k = 0; k < neurons.Length; k++)
                 {
                     //Initialize each neuron
                     double Bias = (2.0 * r.NextDouble()) - 1.0;
@@ -62,7 +62,7 @@ namespace NeuralNetworkBase
                     {
                         Weights = new double[neuronCount[j - 1]];
                     }
-                    for (int l = 0; l < Layers[j].Neurons[k].Weights.Length; l++)
+                    for (int l = 0; l < Weights.Length; l++)
                     {
                         Weights[l] = (2.0 * r.NextDouble()) - 1.0;
                     }
