@@ -2,6 +2,18 @@
 
 A simple back-propogation neural network 
 
+
+## Using NeuralNetworkBase
+
+* Include the project in your solution
+* Add a reference to the projext
+* Add the using statement `using NeuralNetworkBase;` to your .cs file
+* Create a network.
+
+## How to create a network?
+
+See the wiki
+
 ## Example Projects:
 
 ### Line Identifier
@@ -20,3 +32,4 @@ Contains a small library for feed-forward back-propogation neural networks.
 | `Exit`          | `Exits the program`                    |
 | `Test <number>` | `Tests the image at /img/<number>.png` |
 | `Help`          | `Show the command list `               |
+
