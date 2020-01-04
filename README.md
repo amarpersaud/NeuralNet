@@ -6,7 +6,7 @@ A simple back-propogation neural network
 ## Using NeuralNetworkBase
 
 * Include the project in your solution
-* Add a reference to the projext
+* Add a reference to the project
 * Add the using statement `using NeuralNetworkBase;` to your .cs file
 * Create a network.
 
